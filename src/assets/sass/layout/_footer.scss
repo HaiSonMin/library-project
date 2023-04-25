@@ -1,0 +1,14 @@
+﻿footer {
+    .nav-item:not(:last-child) {
+        margin-right: 3rem;
+    }
+
+
+    .nav-link {
+        transition: all 0.3s;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+}

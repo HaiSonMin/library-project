@@ -1,0 +1,75 @@
+﻿.btn {
+  display: inline-block;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  background-color: #000000;
+
+  &:hover {
+    background-color: #fff;
+    color: var(--bs-black);
+    border: solid 1px #000;
+  }
+
+  &--login {
+    display: flex;
+    align-items: center;
+    padding: 0.6rem 1.2rem;
+  }
+
+  &--explore {
+    background-color: $color-black;
+    color: #fff;
+
+    &:hover {
+      border-color: #fff;
+    }
+  }
+
+  &--buy {
+    background-color: #000000;
+    color: #fff;
+  }
+
+  &--view-more {
+    color: #000;
+    background-color: #fff;
+    margin-top: 3rem;
+    border: 1px solid #000;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &--dropdown {
+    background-color: #fff;
+    color: #000;
+    border-color: inherit;
+  }
+
+  &--text {
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 0%;
+    padding: 0;
+
+    &:hover {
+      border: none;
+    }
+  }
+
+  &--checkout {
+    padding: 8px 2rem;
+  }
+
+  &--submit {
+    padding: 8px 1rem;
+  }
+}

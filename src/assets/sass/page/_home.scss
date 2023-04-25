@@ -1,0 +1,86 @@
+﻿.secction-explore {
+    padding: 6rem 0;
+    background-color: $color-grey-dark;
+    background-image: url('../../images/booksImages/01-BookExplore.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &__text {
+
+        h1,
+        p {
+            text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3), 0px -4px 10px rgba(255, 255, 255, 0.3);
+        }
+    }
+
+}
+
+.section-carousel {
+    padding: 6rem 0;
+
+    .container {
+        padding: 6rem;
+    }
+
+    .homepage-carousel-title {
+        margin-bottom: 5rem;
+    }
+}
+
+
+.section-hero {
+
+    & {
+        padding: 4rem 0;
+        margin-top: 2rem;
+    }
+
+    &__context {
+        height: 40rem;
+    }
+
+    .col-image-left,
+    .col-image-right {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .col-image-left {
+        background-image: url('../../images/publicImage/01-HeroBook.jpg');
+        display: -ms-grid;
+        display: grid;
+        -webkit-transition: all .5s;
+        -o-transition: all .5s;
+        transition: all .5s;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
+    }
+
+    .col-image-right {
+        background-image: url('../../images/publicImage/02-HeroBook.jpg');
+        display: -ms-grid;
+        display: grid;
+        -webkit-transition: all .5s;
+        -o-transition: all .5s;
+        transition: all .5s;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+}
+
+.section-library {
+    padding: 6rem 0;
+
+    img {
+        width: 100%;
+        object-fit: cover;
+    }
+}
