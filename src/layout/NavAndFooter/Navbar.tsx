@@ -26,13 +26,13 @@ export const Navbar = () => {
             >
               <span className="navbar-toggler-icon"></span>
             </button>
-            <Link className="navbar-brand header__logo mb-sm-2" to="/">
+            <Link className="navbar-brand header__logo mb-sm-2" to="/home">
               <img src={require("../../assets/images/booksImages/01-LogoPage.png")} className="header__logo" />
             </Link>
             <div className="collapse navbar-collapse d-flex-sm justify-content-between" id="navbarDropDown">
               <ul className="navbar-nav ms-sm-5 mb-3 mb-sm-0  d-flex-sm gap-sm-5">
                 <li className="nav-item">
-                  <NavLink className="nav-link fs-2 lh-sm" aria-current="page" to="/">
+                  <NavLink className="nav-link fs-2 lh-sm" aria-current="page" to="/home">
                     Home
                   </NavLink>
                 </li>
@@ -45,6 +45,13 @@ export const Navbar = () => {
                   <li className="nav-item">
                     <NavLink className="nav-link fs-2 lh-sm" to="shelf">
                       ShelfBooks
+                    </NavLink>
+                  </li>
+                )}
+                {authState?.isAuthenticated && (
+                  <li className="nav-item">
+                    <NavLink className="nav-link fs-2 lh-sm" to="admin">
+                      Admin
                     </NavLink>
                   </li>
                 )}

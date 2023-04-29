@@ -22,7 +22,7 @@ const ReviewListPage = function () {
   useEffect(() => {
     const fetchReviewBook = async () => {
       try {
-        const url = `http://localhost:9000/api/reviews/search/findByBookId?bookId=${bookId}&page=${currentPage - 1}&size=${reviewPerPage}`;
+        const url = `http://localhost:9000/api/reviews/search/findByBookId?book_id=${bookId}&page=${currentPage - 1}&size=${reviewPerPage}`;
 
         const response = await fetch(url);
 

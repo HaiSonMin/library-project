@@ -64,7 +64,7 @@ export const BookCheckoutPage = () => {
   useEffect(() => {
     try {
       const fetchReviewBook = async () => {
-        const reviewUrl: string = `http://localhost:9000/api/reviews/search/findByBookId?bookId=${bookId}`;
+        const reviewUrl: string = `http://localhost:9000/api/reviews/search/findByBookId?book_id=${bookId}`;
 
         const response = await fetch(reviewUrl);
 
@@ -126,7 +126,7 @@ export const BookCheckoutPage = () => {
     const fetchCheckoutBook = async () => {
       try {
         if (authState && authState.isAuthenticated) {
-          const url: string = `http://localhost:9000/command/books/secure/is-checkout/by-user?bookId=${bookId}`;
+          const url: string = `http://localhost:9000/command/books/secure/is-checkout/by-user?book_id=${bookId}`;
           const requestOptions = {
             method: "GET",
             headers: {
@@ -156,7 +156,7 @@ export const BookCheckoutPage = () => {
     const fetchUserReview = async () => {
       try {
         if (authState && authState.isAuthenticated) {
-          const url = `http://localhost:9000/command/reviews/secure/is-review/by-user?bookId=${bookId}`;
+          const url = `http://localhost:9000/command/reviews/secure/is-review/by-user?book_id=${bookId}`;
 
           const requestOptions = {
             method: "GET",
@@ -184,7 +184,7 @@ export const BookCheckoutPage = () => {
 
   // Handler click checkout book
   async function checkoutBook() {
-    const url = `http://localhost:9000/command/books/secure/checkout?bookId=${bookId}`;
+    const url = `http://localhost:9000/command/books/secure/checkout?book_id=${bookId}`;
 
     const requestOptions = {
       method: "PUT",

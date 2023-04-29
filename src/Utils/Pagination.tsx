@@ -1,6 +1,4 @@
-﻿import { Link } from "react-router-dom";
-
-export const Pagination: React.FC<{ currentPage: number; totalPage: number; paginate: any }> = ({ currentPage, totalPage, paginate }) => {
+﻿export const Pagination: React.FC<{ currentPage: number; totalPage: number; paginate: any }> = ({ currentPage, totalPage, paginate }) => {
   // Chỉ hiển thị 3 numberPage only once page
   const pageNumbers: number[] = [];
 
@@ -32,9 +30,7 @@ export const Pagination: React.FC<{ currentPage: number; totalPage: number; pagi
             paginate(1);
           }}
         >
-          <Link className="page-link fs-4" to="/searchbook">
-            FirstPage
-          </Link>
+          <button className="page-link fs-4">FirstPage</button>
         </li>
         <li
           className={`page-item ${currentPage === 1 && "disabled"}`}
@@ -42,33 +38,29 @@ export const Pagination: React.FC<{ currentPage: number; totalPage: number; pagi
             paginate(currentPage - 1);
           }}
         >
-          <Link className="page-link fs-4" to="/searchbook">
-            Previous
-          </Link>
+          <button className="page-link fs-4">Previous</button>
         </li>
         {pageNumbers.map((page) => (
           <li className={`page-item ${currentPage === page && "active"}`} key={page} onClick={() => paginate(page)}>
-            <Link className="page-link fs-4" to="/searchbook">
-              {page}
-            </Link>
+            <button className="page-link fs-4">{page}</button>
           </li>
         ))}
         {/* {currentPage !== totalPage && (
           <li className={`page-item disabled`}>
-            <Link className="page-link fs-4" to="/searchbook" onClick={() => paginate(currentPage + 1)}>
+            <button className="page-link fs-4"  onClick={() => paginate(currentPage + 1)}>
               ...
-            </Link>
+            </button>
           </li>
         )} */}
         <li className={`page-item ${currentPage === totalPage && "disabled"}`}>
-          <Link className="page-link fs-4" to="/searchbook" onClick={() => paginate(currentPage + 1)}>
+          <button className="page-link fs-4" onClick={() => paginate(currentPage + 1)}>
             Next
-          </Link>
+          </button>
         </li>
         <li className={`page-item ${currentPage === totalPage && "disabled"}`}>
-          <Link className="page-link fs-4" to="/searchbook" onClick={() => paginate(totalPage)}>
+          <button className="page-link fs-4" onClick={() => paginate(totalPage)}>
             LastPage
-          </Link>
+          </button>
         </li>
       </ul>
     </nav>

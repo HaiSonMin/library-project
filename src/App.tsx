@@ -8,10 +8,12 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import { BookCheckoutPage } from "./layout/BookCheckoutPage/BookCheckoutPage";
 import { OktaAuth, toRelativeUrl } from "@okta/okta-auth-js";
 import { OktaConfig } from "./lib/OktaConfig";
-import { Security, LoginCallback, SecureRoute } from "@okta/okta-react";
+import { Security, LoginCallback } from "@okta/okta-react";
 import LoginWibget from "./Auth/LoginWidget";
 import ReviewListPage from "./layout/BookCheckoutPage/ReviewListPage/ReviewListPage";
 import ShelfPage from "./layout/ShelfPage/ShelfPage";
+import Messages from "./layout/MessagePage/Messages";
+import { ManagerLibraryPage } from "./layout/ManagerLibraryPage/ManagerLibraryPage";
 
 function App() {
   const oktaAuth = new OktaAuth(OktaConfig);
@@ -25,19 +27,21 @@ function App() {
 
   return (
     <>
-      {/* Set up chiều cao nhỏ nhất là 100vh */}
+      {/* Set up min heigh is 100vh */}
       <div className="d-flex flex-column min-vh-100">
         <Security oktaAuth={oktaAuth} restoreOriginalUri={restoreOriginalUri} onAuthRequired={customAuthHandler}>
           <Navbar />
           <div className="flex-grow-1">
             <Routes>
-              <Route path="/" element={<HomePage />} />
+              <Route path="/home" index element={<HomePage />} />
               <Route path="/searchbook" element={<SearchBookPage />} />
               <Route path="/checkoutbook/:bookId" element={<BookCheckoutPage />} />
               <Route path="/reviewlist/:bookId" element={<ReviewListPage />} />
               <Route path="/login" element={<LoginWibget />} />
               <Route path="/login/callback" Component={LoginCallback} />
               <Route path="/shelf" element={<ShelfPage />} />
+              <Route path="/messages" element={<Messages />} />
+              <Route path="/admin" element={<ManagerLibraryPage />} />
             </Routes>
           </div>
           <Footer />

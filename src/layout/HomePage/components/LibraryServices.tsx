@@ -19,8 +19,8 @@ const LibraryServices = function () {
                   Sign up
                 </Link>
               ) : (
-                <Link className="btn btn--hero" to="/searchbook">
-                  Explope
+                <Link className="btn btn--hero" to="/messages">
+                  Messages
                 </Link>
               )}
             </div>

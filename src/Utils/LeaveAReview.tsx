@@ -55,7 +55,7 @@ export const LeaveAReview: React.FC<{ submitReviewBook: any }> = ({ submitReview
       </ul>
       <StarReview star={reviewStarInput} size={24} />
       {isDisplayInput && (
-        <form method="POST" action="#" onSubmit={(e) => submitReview(e)}>
+        <form method="POST" onSubmit={(e) => submitReview(e)}>
           <hr />
           <h4 className="fs-4 fw-bold">Description: </h4>
           <div>
