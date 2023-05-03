@@ -46,7 +46,7 @@ export const Loans = () => {
   }, [authState, checkout, renewLoan]);
 
   async function handlerReturnBook(bookId: number) {
-    const url: string = `http://localhost:9000/command/books/secure/return-book?bookId=${bookId}`;
+    const url: string = `http://localhost:9000/command/books/secure/return-book?book_id=${bookId}`;
 
     const requestOptions = {
       method: "PUT",
@@ -64,7 +64,7 @@ export const Loans = () => {
   }
 
   async function handlerRenewLoan(bookId: number) {
-    const url: string = `http://localhost:9000/command/books/secure/renew-loan?bookId=${bookId}`;
+    const url: string = `http://localhost:9000/command/books/secure/renew-loan?book_id=${bookId}`;
 
     const requestOptions = {
       method: "PUT",

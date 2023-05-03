@@ -2,8 +2,8 @@
 import { useState } from "react";
 import { AddNewBookPage } from "./components/AddNewBookPage";
 import { ChangeQuantityPage } from "./components/ChangeQuantityPage";
-import { ResponseMessagePage } from "./components/ResponseMessagePage";
-import { Navigate, redirect } from "react-router-dom";
+import { AdminMessagePage } from "./components/AdminMessagePage";
+import { Navigate } from "react-router-dom";
 
 const ADD_NEW_BOOK_PAGE: string = "add_new_book_page";
 const CHANGE_QUANTITY_PAGE: string = "author_page";
@@ -13,15 +13,14 @@ export const ManagerLibraryPage = () => {
   const [pageActive, setPageActive] = useState<string>(ADD_NEW_BOOK_PAGE);
 
   const { authState } = useOktaAuth();
-  const [changeQuantityOfBooksClick, setChangeQuantityOfBooksClick] = useState(false);
-  const [messagesClick, setMessagesClick] = useState(false);
 
   const changePageClickFunction = (namePage: string) => setPageActive(namePage);
 
+  // Redirect if user is not ADMIN
   if (authState?.accessToken?.claims.userType === undefined) return <Navigate to="/home" />;
 
   return (
-    <div className="container">
+    <div className="container mb-5">
       <h3 className="heading-tertiary mb-3">Manager Library</h3>
       <nav className="nav nav-tabs" id="nav-tab" role="tablist">
         <button
@@ -72,7 +71,7 @@ export const ManagerLibraryPage = () => {
           {pageActive === CHANGE_QUANTITY_PAGE && <ChangeQuantityPage />}
         </div>
         <div className="tab-pane fade " id="nav-message" role="tabpanel" aria-labelledby="nav-message-tab" tabIndex={0}>
-          {pageActive === MESSAGES_PAGE && <ResponseMessagePage />}
+          {pageActive === MESSAGES_PAGE && <AdminMessagePage />}
         </div>
       </div>
     </div>

@@ -33,7 +33,7 @@ function App() {
           <Navbar />
           <div className="flex-grow-1">
             <Routes>
-              <Route path="/home" index element={<HomePage />} />
+              <Route path="/" index element={<HomePage />} />
               <Route path="/searchbook" element={<SearchBookPage />} />
               <Route path="/checkoutbook/:bookId" element={<BookCheckoutPage />} />
               <Route path="/reviewlist/:bookId" element={<ReviewListPage />} />

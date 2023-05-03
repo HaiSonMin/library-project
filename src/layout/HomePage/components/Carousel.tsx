@@ -80,7 +80,7 @@ const Carousel = function () {
         {/* Mobile */}
         <div className="d-lg-none mt-3">
           <div className="row d-flex justify-content-center align-items-center">
-            <ReturnBook book={books[10]} key={books[10].id} />
+            <ReturnBook book={books[0]} key={books[0].id} />
           </div>
         </div>
       </>

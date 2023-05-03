@@ -9,9 +9,15 @@ export const ListBook: React.FC<{ book: BookModel }> = ({ book }) => {
           {/* Laptop */}
           <div className="">
             {book.img ? (
-              <img src={book.img} alt={`Book ${book.category}`} width="120px" height="190px" />
+              <img src={book.img} alt={`Book ${book.category}`} className="object-fit-cover" width="120px" height="190px" />
             ) : (
-              <img src={require("../../assets/images/publicImage/02-HeroBook.jpg")} alt="Book" width="120px" height="190px" />
+              <img
+                src={require("../../assets/images/publicImage/02-HeroBook.jpg")}
+                className="object-fit-cover"
+                alt="Book"
+                width="120px"
+                height="190px"
+              />
             )}
           </div>
         </div>

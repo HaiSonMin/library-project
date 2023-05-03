@@ -20,7 +20,7 @@ export const LatestReviewsBook: React.FC<{ reviews: ReviewModel[]; mobile: boole
           </>
         ) : (
           <div className="m-3">
-            <h3 className="heading-tertiary">The book dont have review</h3>
+            <h3 className="heading-tertiary">The book don't have review</h3>
           </div>
         )}
       </div>

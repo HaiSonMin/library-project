@@ -76,8 +76,8 @@ export const MessagePage = () => {
                   <h5 className="fs-4">Response:</h5>
                   {mes.response && mes.adminEmail ? (
                     <>
-                      <h6>{mes.adminEmail} (admin)</h6>
-                      <h6>{mes.adminEmail} (admin)</h6>
+                      <h6 className="fs-5">{mes.adminEmail} (admin)</h6>
+                      <h6 className="fs-4 mb-0">Answer: {mes.response}</h6>
                     </>
                   ) : (
                     <p className="fs-4 mb-0">

@@ -9,9 +9,9 @@ export default function SearchBookPage() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [httpError, setHttpError] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [totalPages, setTotalPages] = useState<number>(0);
   const [bookPerpage] = useState(5);
   const [totalAmountOfBook, setTotalAmountOfBook] = useState<number>(0);
-  const [totalPages, setTotalPages] = useState<number>(0);
   const [changeSearch, setchangeSearch] = useState<string>("");
   const [searchUrl, setSearchUrl] = useState("");
   const [categorySelection, setCategorySelection] = useState<string>("Category");
@@ -29,7 +29,7 @@ export default function SearchBookPage() {
 
         // ------------ Using JPA ------------
 
-        const urlBase: string = "http://localhost:9000/api/books";
+        const urlBase: string = `${process.env.REACT_APP_API}/books`;
 
         let url: string;
 
@@ -89,7 +89,9 @@ export default function SearchBookPage() {
       categoryName.toLowerCase() === "data" ||
       categoryName.toLowerCase() === "devops" ||
       categoryName.toLowerCase() === "novel" ||
-      categoryName.toLowerCase() === "love"
+      categoryName.toLowerCase() === "love" ||
+      categoryName.toLowerCase() === "economy" ||
+      categoryName.toLowerCase() === "education"
     ) {
       // <pageNumber> sẽ được replace khi render lại
       setCategorySelection(categoryName);
@@ -131,70 +133,78 @@ export default function SearchBookPage() {
 
   return (
     <div className="container">
-      <div>
-        <div className="row mt-5">
-          <div className="col-10 col-md-6">
-            <form onSubmit={searchHandlerSubmit} className="d-flex">
-              <input
-                className="from-control py-2 px-3 me-2 fs-3 w-100"
-                type="text"
-                placeholder="Search"
-                aria-labelledby="Search"
-                value={changeSearch}
-                onChange={handlerOnChangeSearch}
-              />
-              <button className="btn btn--search">Search</button>
-            </form>
-          </div>
-          <div className="col-4 mt-3 mt-md-0">
-            <div className="dropdown">
-              <button
-                className="btn btn--dropdown dropdown-toggle d-flex justify-content-between"
-                id="dropdownMenuButton1"
-                type="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                {categorySelection}
-              </button>
-              <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li onClick={() => categoryField("All")}>
-                  <a className="dropdown-item fs-3 d-inline-block w-100 " href="#">
-                    All
-                  </a>
-                </li>
-                <li onClick={() => categoryField("BE")}>
-                  <a className="dropdown-item fs-3 d-inline-block w-100" href="#">
-                    BackEnd
-                  </a>
-                </li>
-                <li onClick={() => categoryField("FE")}>
-                  <a className="dropdown-item fs-3 d-inline-block w-100" href="#">
-                    FrontEnd
-                  </a>
-                </li>
-                <li onClick={() => categoryField("Data")}>
-                  <a className="dropdown-item fs-3 d-inline-block w-100" href="#">
-                    Data
-                  </a>
-                </li>
-                <li onClick={() => categoryField("DevOps")}>
-                  <a className="dropdown-item fs-3 d-inline-block w-100" href="#">
-                    DevOps
-                  </a>
-                </li>
-                <li onClick={() => categoryField("Love")}>
-                  <a className="dropdown-item fs-3 d-inline-block w-100" href="#">
-                    Love
-                  </a>
-                </li>
-                <li onClick={() => categoryField("Novel")}>
-                  <a className="dropdown-item fs-3 d-inline-block w-100" href="#">
-                    Novel
-                  </a>
-                </li>
-              </ul>
-            </div>
+      <div className="row mt-5">
+        <div className="col-10 col-md-6">
+          <form onSubmit={searchHandlerSubmit} className="d-flex">
+            <input
+              className="from-control py-2 px-3 me-2 fs-3 w-100"
+              type="text"
+              placeholder="Search"
+              aria-labelledby="Search"
+              value={changeSearch}
+              onChange={handlerOnChangeSearch}
+            />
+            <button className="btn btn--search">Search</button>
+          </form>
+        </div>
+        <div className="col-4 mt-3 mt-md-0">
+          <div className="dropdown">
+            <button
+              className="btn btn--dropdown dropdown-toggle d-flex justify-content-between"
+              id="dropdownMenuButton1"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              {categorySelection}
+            </button>
+            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li onClick={() => categoryField("All")}>
+                <a className="dropdown-item fs-3 d-inline-block w-100 " href="#">
+                  All
+                </a>
+              </li>
+              <li onClick={() => categoryField("BE")}>
+                <a className="dropdown-item fs-3 d-inline-block w-100" href="#">
+                  BackEnd
+                </a>
+              </li>
+              <li onClick={() => categoryField("FE")}>
+                <a className="dropdown-item fs-3 d-inline-block w-100" href="#">
+                  FrontEnd
+                </a>
+              </li>
+              <li onClick={() => categoryField("Data")}>
+                <a className="dropdown-item fs-3 d-inline-block w-100" href="#">
+                  Data
+                </a>
+              </li>
+              <li onClick={() => categoryField("DevOps")}>
+                <a className="dropdown-item fs-3 d-inline-block w-100" href="#">
+                  DevOps
+                </a>
+              </li>
+              <li onClick={() => categoryField("Love")}>
+                <a className="dropdown-item fs-3 d-inline-block w-100" href="#">
+                  Love
+                </a>
+              </li>
+              <li onClick={() => categoryField("Novel")}>
+                <a className="dropdown-item fs-3 d-inline-block w-100" href="#">
+                  Novel
+                </a>
+              </li>
+              <li onClick={() => categoryField("Economy")}>
+                <a className="dropdown-item fs-3 d-inline-block w-100" href="#">
+                  Economy
+                </a>
+              </li>
+              <li onClick={() => categoryField("Education")}>
+                <a className="dropdown-item fs-3 d-inline-block w-100" href="#">
+                  Education
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
         {totalAmountOfBook > 0 ? (
@@ -215,7 +225,6 @@ export default function SearchBookPage() {
             </button>
           </div>
         )}
-
         <div>
           {content}
           {/* If amount page > 1 then pagination will be displayed */}

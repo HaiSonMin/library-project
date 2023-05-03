@@ -2,6 +2,8 @@
 import { BiUser, BiLogOut } from "react-icons/bi";
 import { Link, NavLink } from "react-router-dom";
 import { useOktaAuth } from "@okta/okta-react";
+
+const ROLE_ADMIN = "admin";
 export const Navbar = () => {
   const { authState, oktaAuth } = useOktaAuth();
 
@@ -32,7 +34,7 @@ export const Navbar = () => {
             <div className="collapse navbar-collapse d-flex-sm justify-content-between" id="navbarDropDown">
               <ul className="navbar-nav ms-sm-5 mb-3 mb-sm-0  d-flex-sm gap-sm-5">
                 <li className="nav-item">
-                  <NavLink className="nav-link fs-2 lh-sm" aria-current="page" to="/home">
+                  <NavLink className="nav-link fs-2 lh-sm" aria-current="page" to="/">
                     Home
                   </NavLink>
                 </li>
@@ -48,7 +50,7 @@ export const Navbar = () => {
                     </NavLink>
                   </li>
                 )}
-                {authState?.isAuthenticated && (
+                {authState?.accessToken?.claims.userType === ROLE_ADMIN && (
                   <li className="nav-item">
                     <NavLink className="nav-link fs-2 lh-sm" to="admin">
                       Admin

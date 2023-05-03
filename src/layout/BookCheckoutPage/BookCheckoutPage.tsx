@@ -232,7 +232,7 @@ export const BookCheckoutPage = () => {
     content = <Spinner />;
   } else if (httpErrorBook || httpErrorReview) {
     content = (
-      <div className="container m-5">
+      <div className="m-5">
         <p>{httpErrorBook || httpErrorReview}</p>
       </div>
     );
@@ -244,9 +244,15 @@ export const BookCheckoutPage = () => {
           <div className="row row-gap-5 mt-3">
             <div className={`col-sm-3 ps-0 col-md-2`}>
               {book?.img ? (
-                <img src={book.img} alt={book.description} width="120px" height="190px" />
+                <img src={book.img} alt={book.description} className="object-fit-cover" width="120px" height="190px" />
               ) : (
-                <img src={require("../../assets/images/publicImage/01-HeroBook.jpg")} alt="Book" width="120px" height="190px" />
+                <img
+                  src={require("../../assets/images/publicImage/01-HeroBook.jpg")}
+                  className="object-fit-cover"
+                  alt="Book"
+                  width="120px"
+                  height="190px"
+                />
               )}
             </div>
             <div className="col-sm-5 col-md-7">
