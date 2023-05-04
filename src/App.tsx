@@ -25,6 +25,8 @@ function App() {
   const restoreOriginalUri = async (_oktaAuth: any, originalUri: any) =>
     navigate("/login", { replace: true, state: toRelativeUrl(originalUri || "/", window.location.origin) });
 
+  console.log("Con cat ne!");
+
   return (
     <>
       {/* Set up min heigh is 100vh */}
