@@ -11,7 +11,7 @@ const LoginWibget = function () {
 
   if (!authState) return <Spinner />;
 
-  return authState?.isAuthenticated ? <Navigate to="/home" /> : <OktaSigninWibget onSuccess={onSuccess} onError={onError} />;
+  return authState?.isAuthenticated ? <Navigate to="/" /> : <OktaSigninWibget onSuccess={onSuccess} onError={onError} />;
 };
 
 export default LoginWibget;

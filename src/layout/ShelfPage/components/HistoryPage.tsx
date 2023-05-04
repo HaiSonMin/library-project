@@ -20,7 +20,7 @@ export function HistoryPage() {
     const fetchHistoryBooksLoans = async () => {
       try {
         if (authState && authState?.isAuthenticated) {
-          const url = `http://localhost:9000/api/histories/search/findBooksByUserEmail?user_email=${authState.accessToken?.claims.sub}&page=${
+          const url = `${process.env.REACT_APP_API}/histories/search/findBooksByUserEmail?user_email=${authState.accessToken?.claims.sub}&page=${
             currentPage - 1
           }&size=${bookPerPage}`;
 

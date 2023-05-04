@@ -29,7 +29,7 @@ export const AdminMessagePage = () => {
     const fetchMessages = async () => {
       try {
         if (authState && authState.isAuthenticated) {
-          const url = `http://localhost:9000/api/messages/search/findByClosed?closed=false&page=${currentPage - 1}&size=${messagePerPage}`;
+          const url = `${process.env.REACT_APP_API}/messages/search/findByClosed?closed=false&page=${currentPage - 1}&size=${messagePerPage}`;
 
           const requestOptions = {
             method: "GET",
@@ -59,7 +59,7 @@ export const AdminMessagePage = () => {
     try {
       if (authState && authState.isAuthenticated && id !== null && response.trim() !== "") {
         const adminMessageRequest = new AdminMessageRequest(id, response);
-        const url = "http://localhost:9000/command/messages/secure/put-message";
+        const url = `${process.env.REACT_APP_COMMAND}/messages/secure/put-message`;
         const responseOptions = {
           method: "PUT",
           headers: {

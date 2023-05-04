@@ -18,7 +18,7 @@ export const Loans = () => {
     const fetchUserCurrentLoans = async () => {
       try {
         if (authState && authState.isAuthenticated) {
-          const url = "http://localhost:9000/command/books/secure/current-loans";
+          const url = `${process.env.REACT_APP_COMMAND}/books/secure/current-loans`;
 
           const requestOptions = {
             method: "GET",
@@ -46,7 +46,7 @@ export const Loans = () => {
   }, [authState, checkout, renewLoan]);
 
   async function handlerReturnBook(bookId: number) {
-    const url: string = `http://localhost:9000/command/books/secure/return-book?book_id=${bookId}`;
+    const url: string = `${process.env.REACT_APP_COMMAND}/books/secure/return-book?book_id=${bookId}`;
 
     const requestOptions = {
       method: "PUT",
@@ -64,7 +64,7 @@ export const Loans = () => {
   }
 
   async function handlerRenewLoan(bookId: number) {
-    const url: string = `http://localhost:9000/command/books/secure/renew-loan?book_id=${bookId}`;
+    const url: string = `${process.env.REACT_APP_COMMAND}/books/secure/renew-loan?book_id=${bookId}`;
 
     const requestOptions = {
       method: "PUT",
@@ -99,9 +99,15 @@ export const Loans = () => {
                 <div key={shelfCurrentLoan.book.id} className="row justify-content-around">
                   <div className="col-sm-4">
                     {shelfCurrentLoan.book?.img ? (
-                      <img src={shelfCurrentLoan.book.img} alt={shelfCurrentLoan.book.title} width="200" height="300" />
+                      <img src={shelfCurrentLoan.book.img} className="object-fit-cover" alt={shelfCurrentLoan.book.title} width="200" height="300" />
                     ) : (
-                      <img src={require("../../../assets/images/publicImage/01-HeroBook.jpg")} alt="Book" width="200" height="300" />
+                      <img
+                        src={require("../../../assets/images/publicImage/01-HeroBook.jpg")}
+                        className="object-fit-cover"
+                        alt="Book"
+                        width="200"
+                        height="300"
+                      />
                     )}
                   </div>
                   <div className="card col-lg-3 col-sm-5 py-5 px-4">

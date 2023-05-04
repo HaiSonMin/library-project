@@ -19,7 +19,7 @@ export const SendMessage = () => {
       if (authState && authState.isAuthenticated && question.trim() !== "" && title.trim() !== "") {
         const newMessage = new MessageModel(title, question, authState.accessToken?.claims.sub);
 
-        const url = `http://localhost:9000/command/messages/secure/post-message`;
+        const url = `${process.env.REACT_APP_COMMAND}/messages/secure/post-message`;
 
         const requestOptions = {
           method: "POST",

@@ -13,11 +13,13 @@ const Carousel = function () {
   useEffect(() => {
     const fetchBooks = async function () {
       try {
-        const baseURL: string = "http://localhost:9000/api/books";
+        const baseURL: string = `${process.env.REACT_APP_API}/books`;
+        // const baseURL: string = `https://localhost:9000/api/books`;
+        // console.log(process.env.REACT_APP_API);
 
-        // const url: string = `${baseURL}?page=0?size=9`;
+        const url: string = `${baseURL}?page=0?size=9`;
 
-        const response = await fetch(baseURL);
+        const response = await fetch(url);
 
         const responseJson = await response.json();
 

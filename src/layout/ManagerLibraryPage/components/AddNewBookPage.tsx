@@ -30,6 +30,7 @@ export const AddNewBookPage = () => {
   function getBase64(file: any) {
     let reader = new FileReader();
     reader.readAsDataURL(file);
+    // If load success
     reader.onload = function () {
       handlerSetSelectedImage(reader.result);
     };
@@ -38,6 +39,7 @@ export const AddNewBookPage = () => {
     };
   }
 
+  // Convert file to base64
   async function base64ConversionForImage(e: any) {
     if (e.target.files[0]) getBase64(e.target.files[0]);
   }
@@ -52,7 +54,7 @@ export const AddNewBookPage = () => {
       category.trim() !== "Category" &&
       selectedImage.trim() !== ""
     ) {
-      const url = "http://localhost:9000/command/books/secure/create-book";
+      const url = `${process.env.REACT_APP_COMMAND}/books/secure/create-book`;
       const newBook = new AddBookRequest(title, author, description, copies, category, selectedImage);
 
       const requestOptions = {

@@ -20,7 +20,7 @@ export const MessagePage = () => {
     const fetchMessages = async () => {
       try {
         if (authState && authState.isAuthenticated) {
-          const url = `http://localhost:9000/api/messages/search/findByUserEmail?user_email=${authState.accessToken?.claims.sub}&page=${
+          const url = `${process.env.REACT_APP_API}/messages/search/findByUserEmail?user_email=${authState.accessToken?.claims.sub}&page=${
             currentPage - 1
           }&size=${messagePerPage}`;
 

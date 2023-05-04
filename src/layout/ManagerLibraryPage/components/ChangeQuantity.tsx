@@ -270,6 +270,10 @@ export const ChangeQuantity: React.FC<{ book: BookModel; handlerDeleteBook: any;
                   disabled={isChange ? false : true}
                 />
               </div>
+              <div className="col-2 mb-3">
+                <label className="form-label fs-4">Copies Available</label>
+                <input className="form-control fs-4 py-2" type="number" value={book.copies_available} disabled={true} />
+              </div>
               <div className="mb-4 d-flex flex-column">
                 <label htmlFor="formFile" className="form-label fs-4">
                   {!isChange ? "Image" : "Select Image"}
