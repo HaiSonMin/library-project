@@ -117,8 +117,13 @@ export const Loans = () => {
                         Due in <span className=" fw-bold">{shelfCurrentLoan.daysLeft}</span> days
                       </p>
                     )}
-                    {shelfCurrentLoan.daysLeft === 0 && <p className="text-success fw-bold">Due Today</p>}
-                    {shelfCurrentLoan.daysLeft < 0 && <p className="text-danger fw-bold">Due in {shelfCurrentLoan.daysLeft} days</p>}
+                    {shelfCurrentLoan.daysLeft === 0 && <p className="text-success fw-bold fs-4">Due Today</p>}
+                    {shelfCurrentLoan.daysLeft < 0 && (
+                      <p className="text-danger fs-4">
+                        Due in <span className="fw-bold">{shelfCurrentLoan.daysLeft} </span>
+                        days
+                      </p>
+                    )}
                     <div className="list-group">
                       <button
                         className="list-group-item list-group-item-action fs-4"

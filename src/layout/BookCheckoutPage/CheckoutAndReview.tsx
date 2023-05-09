@@ -57,7 +57,7 @@ export const CheckoutAndReview: React.FC<{
 
   return (
     <>
-      <div className="card-body container">
+      <div className="card-body">
         <div className={mobile ? alignCenterCss : "mt-3"}>
           <p className="fs-4">
             <span className="fw-bold">{currentLoans}/5</span> books checked out

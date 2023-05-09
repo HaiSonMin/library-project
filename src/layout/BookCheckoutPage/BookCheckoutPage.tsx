@@ -7,7 +7,7 @@ import { CheckoutAndReview } from "./CheckoutAndReview";
 import ReviewModel from "../../Models/ReviewModel";
 import { LatestReviewsBook } from "./LatestReviewsBook";
 import { useOktaAuth } from "@okta/okta-react";
-import ReviewRequestModel from "../../Models/ReviewRequestModel";
+import ReviewRequestModel from "../../Models/Request/ReviewRequestModel";
 export const BookCheckoutPage = () => {
   // Okta Auth
   const { authState } = useOktaAuth();
@@ -35,6 +35,9 @@ export const BookCheckoutPage = () => {
   // Check book has checkout
   const [isCheckoutBook, setIsCheckoutBook] = useState(false);
   const [isLoadingBookCheckout, setIsLoadingBookCheckout] = useState(true);
+
+  // Display error when have 1 book return to late
+  const [displayError, setDisplayError] = useState(false);
 
   const bookId = document.location.pathname.split("/")[2];
 
@@ -195,8 +198,12 @@ export const BookCheckoutPage = () => {
     };
     const checkoutResponse = await fetch(url, requestOptions);
 
-    if (!checkoutResponse.ok) throw new Error("Something went wrong!!");
+    if (!checkoutResponse.ok) {
+      setDisplayError(true); // Display when user checkout book while have a book return to late
+      throw new Error("Something went wrong!!");
+    }
 
+    setDisplayError(false);
     setIsCheckoutBook(true);
   }
 
@@ -240,9 +247,10 @@ export const BookCheckoutPage = () => {
     content = (
       <>
         {/* Table or Laptop */}
-        <div className="container d-none d-sm-block">
-          <div className="row row-gap-5 mt-3">
-            <div className={`col-sm-3 ps-0 col-md-2`}>
+        <div className="d-none d-sm-block">
+          {displayError && <div className="alert alert-danger fs-4">Please pay outstanding fees of the book(s)</div>}
+          <div className="row mt-3 mb-5">
+            <div className={`col-sm-3 col-md-2`}>
               {book?.img ? (
                 <img src={book.img} alt={book.description} className="object-fit-cover" width="120px" height="190px" />
               ) : (
@@ -275,7 +283,7 @@ export const BookCheckoutPage = () => {
                 <span className="fs-3 fw-bold mb-0 mt-1">{!argStar ? 0 : argStar}</span>
               </div>
             </div>
-            <div className="card col-sm-4 col-md-3">
+            <div className="card col-sm-4 col-md-3" style={{ marginLeft: "-6px" }}>
               <CheckoutAndReview
                 book={book}
                 mobile={false}
@@ -294,9 +302,9 @@ export const BookCheckoutPage = () => {
         </div>
 
         {/* Mobile */}
-        <div className="container d-sm-none">
-          <div className="row row-gap-5 mt-3">
-            <div className={`col-sm-3 ps-0 col-md-2 d-flex justify-content-center`}>
+        <div className="d-sm-none">
+          <div className="row row-gap-5 mt-3 mb-5">
+            <div className={`col-sm-3 col-md-2 d-flex justify-content-center`}>
               {book?.img ? (
                 <img src={book.img} alt={book.description} width="120px" height="190px" />
               ) : (

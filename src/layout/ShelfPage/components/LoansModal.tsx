@@ -35,8 +35,8 @@ export const LoansModal: React.FC<{
                   )}
                 </div>
                 <div className="col-10">
-                  <h6>{shelfCurrentLoansBook.book.author}</h6>
-                  <h4>{shelfCurrentLoansBook.book.title}</h4>
+                  <h6 className="fs-5">{shelfCurrentLoansBook.book.author}</h6>
+                  <h4 className="fs-3 fw-bold">{shelfCurrentLoansBook.book.title}</h4>
                 </div>
               </div>
               <hr />
@@ -45,8 +45,12 @@ export const LoansModal: React.FC<{
                   Due in <span className=" fw-bold">{shelfCurrentLoansBook.daysLeft}</span> days
                 </p>
               )}
-              {shelfCurrentLoansBook.daysLeft === 0 && <p className="text-success fw-bold">Due Today</p>}
-              {shelfCurrentLoansBook.daysLeft < 0 && <p className="text-danger fw-bold">Due in {shelfCurrentLoansBook.daysLeft} days</p>}
+              {shelfCurrentLoansBook.daysLeft === 0 && <p className="text-success fw-bold fs-4">Due Today</p>}
+              {shelfCurrentLoansBook.daysLeft < 0 && (
+                <p className="text-danger fs-4">
+                  Due in <span className="fw-bold">{shelfCurrentLoansBook.daysLeft}</span> days
+                </p>
+              )}
               <div className="list-group">
                 <button
                   className="list-group-item list-group-item-action fs-4"
